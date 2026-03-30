@@ -67,8 +67,7 @@ class MessageService:
         """
         
         for agent in self.__model.agents:
-        
-            if agent.get_name() == agent_name:
+            if hasattr(agent, "get_name") and agent.get_name() == agent_name:
             
                 return agent
 
