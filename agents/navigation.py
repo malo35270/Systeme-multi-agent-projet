@@ -95,7 +95,7 @@ class AStarFrontierNavigator:
         frontiers = self.frontier_cells(robot)
         if not frontiers:
             return None
-        return min(frontiers, key=lambda pos: robot.manhattan_distance(pos, current_pos))
+        return min(frontiers, key=lambda pos: robot.shortest_path_distance(pos, current_pos))
 
     def exploration_move(self, robot):
         target = self.closest_frontier(robot)

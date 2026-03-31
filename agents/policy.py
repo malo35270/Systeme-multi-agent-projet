@@ -26,7 +26,7 @@ class DecisionPolicy:
         )
 
         if robot.carrying and can_deposit_now:
-            return {"name": "deposit"}
+            return {"name": "deposit", "waste_color": robot.carrying[0] if robot.carrying else None}
 
         if len(robot.carrying) >= robot.max_carry:
             target = robot.closest_known_deposit_cell()
@@ -37,7 +37,7 @@ class DecisionPolicy:
             return self.navigator.exploration_move(robot)
 
         if robot.color in here.get("wastes", []):
-            return {"name": "pick_up"}
+            return {"name": "pickup", "waste_color": robot.color}
 
         target = robot.closest_allowed_waste()
         if target is not None:
