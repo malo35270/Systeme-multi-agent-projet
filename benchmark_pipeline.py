@@ -132,9 +132,7 @@ def _build_variants(config: dict[str, Any]) -> list[dict[str, Any]]:
 def _build_seed_list(config: dict[str, Any], base_params: dict[str, Any]) -> list[int]:
     if "seeds" in config:
         return list(config["seeds"])
-    repeats = int(config.get("repeats", 5))
-    base_seed = int(base_params.get("seed", 0))
-    return [base_seed + i for i in range(repeats)]
+    return [int(base_params.get("seed", 0))]
 
 
 def _color_clear_steps(timeline: list[dict[str, int]]) -> dict[str, int | None]:
